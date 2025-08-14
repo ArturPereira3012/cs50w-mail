@@ -1,0 +1,170 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Mail{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+       
+         <style>
+            #emails-view, #compose-view, #email-view {
+  display: none;
+}
+
+/* Item de email */
+.email-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.email-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Emails lidos e não lidos */
+.email-item.read {
+  background-color: #f7f9fc;
+  font-weight: normal;
+}
+
+.email-item.unread {
+  background-color: #ffffff;
+  font-weight: bold;
+  border-left: 4px solid #007bff; /* borda azul para não lidos */
+}
+
+/* Assunto */
+.email-subject {
+  flex-grow: 1;
+  padding: 0 12px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Data/Hora */
+.email-timestamp {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Status do email na view */
+.email-details .status {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Carregando */
+.spinner-border {
+  margin: 25px auto;
+  display: block;
+}
+
+/* Nenhum email */
+.no-emails {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+/* Alerta de erro */
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* Estilos para os botões */
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.email-actions {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+/* Efeitos de hover */
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-info:hover {
+  background-color: #138496;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+         </style>
+
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
